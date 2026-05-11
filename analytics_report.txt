@@ -1,0 +1,39 @@
+HABIT TRACKER ANALYTICS REPORT
+========================================
+
+Habit: Drink Water
+Periodicity: daily
+Completion Rate: 89.3%
+Current Streak: 7
+Best Streak: 7
+
+Habit: Exercise
+Periodicity: daily
+Completion Rate: 64.3%
+Current Streak: 3
+Best Streak: 3
+
+Habit: Do The Washing
+Periodicity: weekly
+Completion Rate: 14.3%
+Current Streak: 1
+Best Streak: 3
+
+Habit: Meal Prep
+Periodicity: weekly
+Completion Rate: 14.3%
+Current Streak: 4
+Best Streak: 4
+
+Habit: Studying (1-3 hours)
+Periodicity: daily
+Completion Rate: 89.3%
+Current Streak: 7
+Best Streak: 7
+
+Habit: Studying (3-6 hours)
+Periodicity: daily
+Completion Rate: 25.0%
+Current Streak: 1
+Best Streak: 1
+
