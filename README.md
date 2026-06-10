@@ -115,16 +115,19 @@ python -m unittest test_habit_tracker.py
 - Colorama
 - Unittest
 
----
-
 ## Screenshots
 
-Include screenshots showing:
+### Main Menu
 
-1. Main menu
-2. Analytics dashboard
-3. Weekly summary
-4. Unit test results
+![Main Menu](screenshots/main_menu.png)
+
+### Analytics Dashboard
+
+![Analytics Dashboard](screenshots/analytics_dashboard.png)
+
+### Unit Tests
+
+![Unit Tests](screenshots/unit_tests.png)
 
 ---
 
