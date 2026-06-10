@@ -17,6 +17,10 @@ manager.habits = load_habits()
 init(autoreset=True)
 
 def run():
+    """
+    Runs the Habit Tracker command-line interface.
+    Displays the menu and handles user interaction.
+    """
     print(Fore.CYAN + "\nWelcome back!")
 
     print(
@@ -54,6 +58,9 @@ def run():
 
         choice = input("Choose: ")
 
+        # --------------------
+        # Add Habit
+        # --------------------
         if choice == "1":
             name = input("Habit name: ").strip()
 
@@ -71,7 +78,9 @@ def run():
             save_habits(manager.habits)
             print(f"✔ Habit '{name}' added successfully!")
 
-
+        # --------------------
+        # View Habits
+        # --------------------
         elif choice == "2":
 
             if not manager.habits:
@@ -92,7 +101,6 @@ def run():
                         f"Longest Streak: {h.get_longest_streak()} 🏆"
 
                     )
-
         elif choice == "3":
             try:
                 index = int(input("Enter the number next to the habit: "))
@@ -140,8 +148,9 @@ def run():
                 for h in filtered:
                     print(h)
 
-
-
+        # --------------------
+        # Analytics Dashboard
+        # --------------------
         elif choice == "5":
 
             start_date = datetime.strptime("2026-04-14", "%Y-%m-%d").date()
@@ -172,11 +181,13 @@ def run():
 
                     if confirm == "y":
 
-                        deleted_habit = manager.habits.pop(index)
+                        deleted_habit = manager.habits[index]
 
-                        save_habits(manager.habits)
-
-                        print(Fore.GREEN + f"Habit '{deleted_habit.name}' deleted successfully.")
+                        if manager.delete_habit(index):
+                            save_habits(manager.habits)
+                            print(Fore.GREEN + f"Habit '{deleted_habit.name}' deleted successfully.")
+                        else:
+                            print(Fore.RED + "❌ Invalid habit index!")
 
                     else:
 
@@ -212,15 +223,21 @@ def run():
                         f"New periodicity (daily/weekly, leave blank to keep '{habit.periodicity}'): "
                     ).strip().lower()
 
-                    if new_name:
-                        habit.name = new_name
+                    if not new_name:
+                        new_name = habit.name
 
-                    if new_periodicity in ["daily", "weekly"]:
-                        habit.periodicity = new_periodicity
+                    if not new_periodicity:
+                        new_periodicity = habit.periodicity
 
-                    save_habits(manager.habits)
+                    if new_periodicity not in ["daily", "weekly"]:
+                        print(Fore.RED + "❌ Invalid periodicity.")
+                        continue
 
-                    print(Fore.GREEN + "✔ Habit updated successfully!")
+                    if manager.edit_habit(index, new_name, new_periodicity):
+                        save_habits(manager.habits)
+                        print(Fore.GREEN + "✔ Habit updated successfully!")
+                    else:
+                        print(Fore.RED + "❌ Invalid habit index!")
 
                 except (ValueError, IndexError):
                     print(Fore.RED + "❌ Invalid habit index!")

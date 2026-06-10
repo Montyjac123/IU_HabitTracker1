@@ -1,14 +1,21 @@
-from datetime import datetime, timedelta
+from datetime import datetime
 
 
 class Habit:
     def __init__(self, name, periodicity):
+        """
+        Creates a new habit with a name and periodicity.
+        """
         self.name = name
         self.periodicity = periodicity
         self.created_at = datetime.now()
         self.completed_dates = []
 
     def mark_completed(self):
+        """
+        Marks the habit as completed for today's date.
+        Prevents the same habit from being completed twice on the same day.
+        """
         today = datetime.now().date().isoformat()
 
         if today in self.completed_dates:
@@ -18,6 +25,11 @@ class Habit:
         return True
 
     def get_streak(self):
+        """
+        Calculates the current streak based on the habit's periodicity.
+        Daily habits need consecutive days.
+        Weekly habits need completions exactly 7 days apart.
+        """
         if not self.completed_dates:
             return 0
 
@@ -33,14 +45,21 @@ class Habit:
 
             if self.periodicity == "daily" and difference == 1:
                 streak += 1
-            elif self.periodicity == "weekly" and difference <= 7:
+
+            elif self.periodicity == "weekly" and difference == 7:
                 streak += 1
+
             else:
                 break
 
         return streak
 
     def get_longest_streak(self):
+        """
+        Calculates the longest streak based on the habit's periodicity.
+        Daily habits are checked day by day.
+        Weekly habits are checked week by week.
+        """
         if not self.completed_dates:
             return 0
 
@@ -58,7 +77,7 @@ class Habit:
                 current += 1
                 longest = max(longest, current)
 
-            elif self.periodicity == "weekly" and difference <= 7:
+            elif self.periodicity == "weekly" and difference == 7:
                 current += 1
                 longest = max(longest, current)
 
@@ -66,5 +85,10 @@ class Habit:
                 current = 1
 
         return longest
+
     def __str__(self):
+        """
+        Returns a readable string version of the habit.
+        """
         return f"{self.name} ({self.periodicity})"
+
