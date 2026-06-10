@@ -7,7 +7,9 @@ from analytics import (
     get_most_completed,
     get_total_completed,
     get_longest_streak,
-    get_best_streak
+    get_best_streak,
+    get_completion_rate,
+    get_performance_rating
 )
 
 class TestHabitManager(unittest.TestCase):
@@ -37,6 +39,18 @@ class TestHabitManager(unittest.TestCase):
 
         self.assertTrue(result)
         self.assertEqual(len(manager.habits), 0)
+
+    def test_complete_habit(self):
+        """
+        Tests that a habit can be marked as completed.
+        """
+        manager = HabitManager()
+        manager.add_habit("Drink Water", "daily")
+
+        result = manager.complete_habit(0)
+
+        self.assertTrue(result)
+        self.assertEqual(len(manager.habits[0].completed_dates), 1)
 
 class TestAnalytics(unittest.TestCase):
 
@@ -92,6 +106,22 @@ class TestAnalytics(unittest.TestCase):
         result = get_best_streak(self.weekly_habit)
 
         self.assertEqual(result, 4)
+
+    def test_get_completion_rate(self):
+        """
+        Tests that completion rate is calculated correctly.
+        """
+        result = get_completion_rate(self.daily_habit, 3)
+
+        self.assertEqual(result, 100.0)
+
+    def test_get_performance_rating(self):
+        """
+        Tests that a habit receives the correct performance rating.
+        """
+        result = get_performance_rating(self.daily_habit, 3)
+
+        self.assertEqual(result, "Excellent")
 
 
 if __name__ == "__main__":
