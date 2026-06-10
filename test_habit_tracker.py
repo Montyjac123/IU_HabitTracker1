@@ -11,23 +11,23 @@ from analytics import (
 )
 
 class TestHabitManager(unittest.TestCase):
-    def test_add_habit(selfself):
+    def test_add_habit(self):
         manager = HabitManager()
         manager.add_habit("Drink Water", "daily")
 
         self.assertEqual(len(manager.habits),1)
         self.assertEqual(manager.habits[0].name, "Drink Water")
-        self.assertEqual(manager.habits[0].periodicity, "Daily")
+        self.assertEqual(manager.habits[0].periodicity, "daily")
 
     def test_edit_habit(self):
         manager = HabitManager()
         manager.add_habit("Drink Water", "daily")
 
-        result = manager.edit_habit(0,"Excercise", "weekly")
+        result = manager.edit_habit(0,"Exercise", "weekly")
 
         self.assertTrue(result)
-        self.assertEqual(manager.habits[0].name, "Excercise")
-        self.assertEqual(manager.habits[0].periodicity, "Weekly")
+        self.assertEqual(manager.habits[0].name, "Exercise")
+        self.assertEqual(manager.habits[0].periodicity, "weekly")
 
     def test_delete_habit(self):
         manager = HabitManager()
@@ -96,3 +96,4 @@ class TestAnalytics(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
