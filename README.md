@@ -119,15 +119,15 @@ python -m unittest test_habit_tracker.py
 
 ### Main Menu
 
-![Main Menu](screenshots/main_menu.png.png)
+![Main Menu](screenshots/main_menu.png)
 
 ### Analytics Dashboard
 
-![Analytics Dashboard](screenshots/analytics_dashboard.png.png)
+![Analytics Dashboard](screenshots/analytics_dashboard.png)
 
 ### Unit Tests
 
-![Unit Tests](screenshots/unit_tests.png.png)
+![Unit Tests](screenshots/unit_tests.png)
 
 ---
 
