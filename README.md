@@ -124,6 +124,8 @@ python -m unittest test_habit_tracker.py
 ### Analytics Dashboard
 
 ![Analytics Dashboard](screenshots/analytics_dashboard.png)
+![Analytics Dashboard](screenshots/analytics_dashboard_2.png)
+![Analytics Dashboard](screenshots/analytics_dashboard_3.png)
 
 ### Unit Tests
 
